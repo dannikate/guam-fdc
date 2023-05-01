@@ -24,9 +24,11 @@ const inarajan = L.marker([13.2792, 144.7302]).bindPopup('Inajaran')
 const umatac = L.marker([13.3139, 144.6698]).bindPopup('Umatac')
 const merizo = L.marker([13.2682, 144.6918]).bindPopup('Merizo')
 
-const villages = L.layerGroup([yigo, dededo, mangilao, tamuning, barrigada, agana, asan, piti, yona, santaRita, agat, talofofo, inarajan, umatac, merizo]).addTo(map);
+// const villages = L.layerGroup([yigo, dededo, mangilao, tamuning, barrigada, agana, asan, piti, yona, santaRita, agat, talofofo, inarajan, umatac, merizo]).addTo(map);
 
-const layerControl = L.control.layers({"Open Street Map": osm}, {"Villages": villages}).addTo(map);
+// const layerControl = L.control.layers({"Open Street Map": osm}, {"Villages": villages}).addTo(map);
+
+const layerControl = L.control.layers({"Open Street Map": osm}).addTo(map);
 
 
 let plotData
