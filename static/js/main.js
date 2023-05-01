@@ -1,6 +1,6 @@
 const map = L.map('map', {
     center: [13.4443, 144.7937],
-    zoom: 11,
+    zoom: 12,
 })
 const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
