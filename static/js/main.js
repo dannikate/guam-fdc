@@ -5,13 +5,13 @@ const map = L.map('map', {
 const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
-}).addTo(map);
+});
 
 // ESRI World Imagery 
 const ewi = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: baseLayersZoom,
+    maxZoom: 19,
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community | DKValerio, MWZapata, JBulaklak, NCHabana 2022'
-}); 
+}).addTo(map); 
 
 
 const yigo = L.marker([13.5640, 144.9061]).bindPopup('Yigo')
@@ -35,11 +35,11 @@ const merizo = L.marker([13.2682, 144.6918]).bindPopup('Merizo')
 // const layerControl = L.control.layers({"Open Street Map": osm}, {"Villages": villages}).addTo(map);
 
 const baseLayers = {
+    'ESRI World Imagery': ewi,
     'Open Street Map': osm,
-    'ESRI World Imagery': ewi
 }
 
-const layerControl = L.control.layers({"Open Street Map": osm}).addTo(map);
+const layerControl = L.control.layers(baseLayers, null).addTo(map);
 
 
 let plotData
