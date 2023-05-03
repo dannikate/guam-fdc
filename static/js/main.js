@@ -34,6 +34,11 @@ const merizo = L.marker([13.2682, 144.6918]).bindPopup('Merizo')
 
 // const layerControl = L.control.layers({"Open Street Map": osm}, {"Villages": villages}).addTo(map);
 
+const baseLayers = {
+    'Open Street Map': osm,
+    'ESRI World Imagery': ewi
+}
+
 const layerControl = L.control.layers({"Open Street Map": osm}).addTo(map);
 
 
