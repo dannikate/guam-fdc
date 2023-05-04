@@ -2,14 +2,15 @@ const map = L.map('map', {
     center: [13.4443, 144.7937],
     zoom: 12,
 })
+
 const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 20,
     attribution: '© OpenStreetMap'
 });
 
 // ESRI World Imagery 
 const ewi = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19,
+    maxZoom: 20,
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community | DKValerio, MWZapata, JBulaklak, NCHabana 2022'
 }).addTo(map); 
 
@@ -41,6 +42,9 @@ const baseLayers = {
 
 const layerControl = L.control.layers(baseLayers, null).addTo(map);
 
+const mini_ewi = new L.TileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {minZoom: 0, maxZoom: 15, attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community | DKValerio, MWZapata, JBulaklak, NCHabana 2022'});
+
+var miniMap = new L.Control.MiniMap(mini_ewi, { toggleDisplay: true }).addTo(map);
 
 let plotData
 const plotFDC = () => {
