@@ -43,8 +43,14 @@ const baseLayers = {
 const layerControl = L.control.layers(baseLayers, null).addTo(map);
 
 const mini_ewi = new L.TileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {minZoom: 0, maxZoom: 15, attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community | DKValerio, MWZapata, JBulaklak, NCHabana 2022'});
+const mini_osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 0, maxZoom: 15, attribution: '© OpenStreetMap | DKValerio, MWZapata, JBulaklak, NCHabana 2022'});
 
 var miniMap = new L.Control.MiniMap(mini_ewi, { toggleDisplay: true }).addTo(map);
+
+map.on('baselayerchange', function(e) {
+    // console.log(e.layer);
+    miniMap = new L.Control.MiniMap(mini_osm, { toggleDisplay: true }).addTo(map);
+  });
 
 let plotData
 const plotFDC = () => {
@@ -98,4 +104,8 @@ fetch('./static/geojson/rivers.json')
       }
       const riverGeoJSON = L.geoJSON(geojson, {onEachFeature: getFDCValues}).addTo(map);
       layerControl.addOverlay(riverGeoJSON, "Selected River Reach in Guam")
+  })
+
+  map.on('baselayerchange', function(e) {
+    console.log(e.layer);
   })
